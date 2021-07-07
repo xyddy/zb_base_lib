@@ -24,14 +24,14 @@ open class LoggingInterceptor : Interceptor {
         val startNs = System.nanoTime()
         val response = chain.proceed(request)
         val tookMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNs)
-        val responseBody = response.body
+        val responseBody = response.body()
         val contentLength = responseBody!!.contentLength()
         val okLog = OkLog()
 
 
         okLog.start("Response ↓↓↓")
-        okLog.log("Code-->" + response.code)
-        okLog.log("URL-->" + response.request.url)
+        okLog.log("Code-->" + response.code())
+        okLog.log("URL-->" + response.request().url())
         okLog.log("TimeToken-->" + tookMs + "ms")
         if (hasBody(response)) {
             val source = responseBody.source()
@@ -48,7 +48,7 @@ open class LoggingInterceptor : Interceptor {
                 }
             }
             if (contentLength != 0L && contentLength < 32 * 1024 && bodyIsText(contentType)) {
-                if (bodyEncodedGzip(response.headers)) {
+                if (bodyEncodedGzip(response.headers())) {
                     buffer = decodeGzip(buffer)
                 }
                 okLog.log("________________________________________________________")
@@ -68,7 +68,7 @@ open class LoggingInterceptor : Interceptor {
     }
 
     open fun bodyIsText(contentType: MediaType?): Boolean {
-        return contentType != null && ("text" == contentType.type || "json" == contentType.subtype || contentType.subtype.contains("form"))
+        return contentType != null && ("text" == contentType.type() || "json" == contentType.subtype() || contentType.subtype().contains("form"))
     }
 
     @Throws(IOException::class)
@@ -82,14 +82,14 @@ open class LoggingInterceptor : Interceptor {
     }
 
     open fun hasBody(response: Response): Boolean {
-        if (response.request.method == "HEAD") {
+        if (response.request().method() == "HEAD") {
             return false
         }
-        val responseCode = response.code
+        val responseCode = response.code()
         return if ((responseCode < StatusLine.HTTP_CONTINUE || responseCode >= 200)
                 && responseCode != HttpURLConnection.HTTP_NO_CONTENT && responseCode != HttpURLConnection.HTTP_NOT_MODIFIED) {
             true
-        } else contentLength(response.headers) != -1L || "chunked".equals(response.header("Transfer-Encoding"), ignoreCase = true)
+        } else contentLength(response.headers()) != -1L || "chunked".equals(response.header("Transfer-Encoding"), ignoreCase = true)
     }
 
     open fun contentLength(headers: Headers): Long {

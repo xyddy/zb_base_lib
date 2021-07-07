@@ -8,12 +8,12 @@ import android.net.wifi.WifiManager
 import android.os.Build
 import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
-import okhttp3.internal.and
 import java.io.*
 import java.net.InetAddress
 import java.net.NetworkInterface
 import java.net.SocketException
 import java.util.*
+import kotlin.experimental.and
 
 object Mac {
     fun getMac(context: AppCompatActivity): String? {
@@ -155,7 +155,7 @@ object Mac {
                     if (i != 0) {
                         buffer.append(':')
                     }
-                    val str = Integer.toHexString(b[i] and 0xFF)
+                    val str = Integer.toHexString((b[i] and 0xFF.toByte()).toInt())
                     buffer.append(if (str.length == 1) "0$str" else str)
                 }
                 strMacAddr = buffer.toString().toUpperCase(Locale.ROOT)

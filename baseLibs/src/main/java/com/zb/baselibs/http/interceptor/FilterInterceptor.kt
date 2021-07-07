@@ -19,7 +19,7 @@ class FilterInterceptor : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
-        val httpBuilder = originalRequest.url.newBuilder()
+        val httpBuilder =originalRequest.url().newBuilder()
         httpBuilder.addQueryParameter("pfDevice", "Android")
             .addQueryParameter("pfAppType", BaseApp.appType)
             .addQueryParameter("pfAppVersion", BaseApp.context.versionName())

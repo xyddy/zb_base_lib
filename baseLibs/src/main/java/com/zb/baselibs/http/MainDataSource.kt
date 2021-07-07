@@ -8,7 +8,6 @@ import com.zb.baselibs.http.datasource.RemoteExtendDataSource
 import com.zb.baselibs.http.interceptor.FilterInterceptor
 import com.zb.baselibs.http.interceptor.LoggingInterceptor
 import com.zb.baselibs.http.viewmodel.IUIActionEvent
-import github.leavesc.monitor.MonitorInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -39,7 +38,7 @@ class MainDataSource<Api : Any>(iActionEvent: IUIActionEvent?, apiServiceClass: 
                 .retryOnConnectionFailure(true)
                 .addInterceptor(FilterInterceptor())
                 .addInterceptor(LoggingInterceptor())
-                .addInterceptor(MonitorInterceptor(BaseApp.context))
+//                .addInterceptor(MonitorInterceptor(BaseApp.context))
             return builder.build()
         }
     }
