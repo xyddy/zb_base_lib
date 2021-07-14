@@ -174,7 +174,6 @@ fun isAppRunning(): Boolean {
     return isAppRunning
 }
 
-
 /**
  * 获取城市信息
  */

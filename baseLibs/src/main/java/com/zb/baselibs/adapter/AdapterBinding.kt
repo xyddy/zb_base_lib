@@ -30,6 +30,8 @@ import com.zb.baselibs.R
 import com.zb.baselibs.app.BaseApp
 import com.zb.baselibs.listener.EditPriceChangedListener
 import com.zb.baselibs.utils.glide.*
+import com.zb.baselibs.views.autopoll.AutoPollRecyclerView
+import com.zb.baselibs.views.autopoll.ScrollSpeedLinearLayoutManger
 import java.util.concurrent.TimeUnit
 
 // 按钮防抖
@@ -224,4 +226,15 @@ fun EditText.priceEdit(editForPrice: Boolean) {
     if (editForPrice)
         this.inputType = InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_CLASS_NUMBER
     this.addTextChangedListener(EditPriceChangedListener(this))
+}
+
+@BindingAdapter("autoAdapter")
+fun <T> AutoPollRecyclerView.setAdapter(autoAdapter: BindingItemAdapter<T>) {
+    autoAdapter.setMax(true)
+    this.adapter = autoAdapter
+    val layoutManager1 = ScrollSpeedLinearLayoutManger(this.context)
+    layoutManager1.setSmoothScrollbarEnabled(true)
+    layoutManager1.setAutoMeasureEnabled(true)
+    this.layoutManager = layoutManager1 // 布局管理器。
+    this.setHasFixedSize(true) // 如果Item够简单，高度是确定的，打开FixSize将提高性能。
 }
