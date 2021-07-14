@@ -3,7 +3,9 @@ package com.zb.baselibs.adapter
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.text.InputType
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,6 +28,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.zb.baselibs.R
 import com.zb.baselibs.app.BaseApp
+import com.zb.baselibs.listener.EditPriceChangedListener
 import com.zb.baselibs.utils.glide.*
 import java.util.concurrent.TimeUnit
 
@@ -202,4 +205,14 @@ fun loadImage(
     } catch (e: java.lang.Exception) {
         e.printStackTrace()
     }
+}
+
+/**
+ * 确认2未小数金额
+ */
+@BindingAdapter("editForPrice")
+fun EditText.priceEdit(editForPrice: Boolean) {
+    if (editForPrice)
+        this.inputType = InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_CLASS_NUMBER
+    this.addTextChangedListener(EditPriceChangedListener(this))
 }

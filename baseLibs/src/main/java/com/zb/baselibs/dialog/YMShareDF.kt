@@ -8,7 +8,6 @@ import com.zb.baselibs.R
 import com.zb.baselibs.adapter.BaseAdapter
 import com.zb.baselibs.bean.ShareItem
 import com.zb.baselibs.databinding.DfYmShareBinding
-import com.zb.baselibs.dialog.BaseDialogFragment
 
 class YMShareDF(activity: AppCompatActivity) : BaseDialogFragment(activity) {
 

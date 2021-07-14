@@ -2,10 +2,12 @@ package com.zb.baselibs.activity
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.zb.baselibs.app.BaseApp
+import com.zb.baselibs.utils.DebuggerUtils
 import org.simple.eventbus.EventBus
 
 abstract class BaseActivity : BaseReactiveActivity() {
@@ -17,6 +19,11 @@ abstract class BaseActivity : BaseReactiveActivity() {
         super.onCreate(savedInstanceState)
         activity = this
         BaseApp.addActivity(this)
+        if (!DebuggerUtils.isDebuggable(BaseApp.context))
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE
+            )
         mBinding = DataBindingUtil.setContentView(this, getRes())
         try {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT

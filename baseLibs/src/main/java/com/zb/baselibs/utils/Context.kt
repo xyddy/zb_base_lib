@@ -20,7 +20,18 @@ import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import com.zb.baselibs.app.BaseApp
 import java.io.File
+
+
+fun Context.uploadFile(outPutUrl: String) {
+    BaseApp.context.sendBroadcast(
+        Intent(
+            Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+            Uri.parse("file://$outPutUrl")
+        )
+    )
+}
 
 /**
  * 检查当前网络是否连接
@@ -135,6 +146,7 @@ fun Context.versionName(): String {
 fun Context.density(): Float {
     return resources.displayMetrics.density
 }
+
 /**
  * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
  */

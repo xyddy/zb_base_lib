@@ -26,6 +26,7 @@ android {
         }
         ndk {
             abiFilters "armeabi", "armeabi-v7a"
+            cFlags "-Wall -O2 -U_FORTIFY_SOURCE -fstack-protector-all"
         }
     }
 
