@@ -35,8 +35,7 @@
             android:process=":pushservice" />
 
         <receiver
-            android:name="com.igexin.sdk.PushReceiver"
-            android:exported="true">
+            android:name="com.igexin.sdk.PushReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
