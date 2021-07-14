@@ -36,9 +36,16 @@ class AMapLocation(context: Context?) {
                     saveString("${BaseApp.projectName}_address", address)
 
                     callBack?.success()
+                } else if (location.errorCode == 12) {
+                    Toast.makeText(BaseApp.context, "  定位权限被禁用,请授予应用定位权限", Toast.LENGTH_SHORT)
+                        .show()
                 } else {
                     if (getString("${BaseApp.projectName}_longitude").isEmpty()) {
-                        Toast.makeText(BaseApp.context, "定位失败，请检查定位是否开启或连接WIFI重新尝试", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            BaseApp.context,
+                            "定位失败，请检查定位是否开启或连接WIFI重新尝试",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
                         callBack?.success()
                     }
