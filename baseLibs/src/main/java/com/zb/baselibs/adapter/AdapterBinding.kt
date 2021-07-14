@@ -132,9 +132,18 @@ fun SmartRefreshLayout.onLoadMoreListener(onLoadMoreListener: OnLoadMoreListener
     requireAll = false
 )
 fun loadImage(
-    view: ImageView, imageUrl: String?, imageRes: Int, defaultRes: Int, widthSize: Int,
-    heightSize: Int, isCircle: Boolean, roundSize: Float,
-    isBitmap: Boolean, cornerType: Int, isBlur: Boolean, scale: Float
+    view: ImageView,
+    imageUrl: String = "",
+    imageRes: Int = 0,
+    defaultRes: Int = 0,
+    widthSize: Int = 0,
+    heightSize: Int = 0,
+    isCircle: Boolean = false,
+    roundSize: Float = 0f,
+    isBitmap: Boolean = false,
+    cornerType: Int = 0,
+    isBlur: Boolean = false,
+    scale: Float = 0f
 ) {
     var imageUrl = imageUrl
     try {
