@@ -59,11 +59,10 @@
         <activity
             android:name="com.igexin.sdk.GActivity"
             android:excludeFromRecents="true"
-            android:exported="false"
+            android:exported="true"
             android:process=":pushservice"
             android:taskAffinity="com.igexin.sdk.PushActivityTask"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            tools:replace="android:exported" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- 个推SDK配置结束 -->
         <!-- QQ分享 start-->
