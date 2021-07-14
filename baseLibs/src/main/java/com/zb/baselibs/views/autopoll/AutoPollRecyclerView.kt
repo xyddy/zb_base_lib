@@ -3,9 +3,7 @@ package com.zb.baselibs.views.autopoll
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewConfiguration
-import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zb.baselibs.adapter.BindingItemAdapter
 import java.lang.ref.WeakReference
 
 class AutoPollRecyclerView(context: Context?, attrs: AttributeSet?) :

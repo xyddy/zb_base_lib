@@ -7,6 +7,7 @@ import android.text.InputType
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -72,7 +73,7 @@ fun <T> initAdapter(
                 view.addItemDecoration(
                     MyDecoration(
                         view.context, LinearLayoutManager.HORIZONTAL,
-                        size, view.context.resources.getColor(color)
+                        size, ContextCompat.getColor(view.context, color)
                     )
                 )
             }
@@ -233,8 +234,8 @@ fun <T> AutoPollRecyclerView.setAdapter(autoAdapter: BindingItemAdapter<T>) {
     autoAdapter.setMax(true)
     this.adapter = autoAdapter
     val layoutManager1 = ScrollSpeedLinearLayoutManger(this.context)
-    layoutManager1.setSmoothScrollbarEnabled(true)
-    layoutManager1.setAutoMeasureEnabled(true)
+    layoutManager1.isSmoothScrollbarEnabled = true
+    layoutManager1.isAutoMeasureEnabled = true
     this.layoutManager = layoutManager1 // 布局管理器。
     this.setHasFixedSize(true) // 如果Item够简单，高度是确定的，打开FixSize将提高性能。
 }
