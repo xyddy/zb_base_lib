@@ -1,9 +1,9 @@
-package com.zb.baselibs.utils
+package com.zb.baselibs.utils.awesome
 
 import android.util.Log
-import com.jiang.awesomedownloader.core.AwesomeDownloader
 import com.zb.baselibs.bean.ResFile
 import com.zb.baselibs.db.ResFileDb
+import com.zb.baselibs.utils.awesome.core.AwesomeDownloader
 import java.io.File
 
 object DownLoadUtil {

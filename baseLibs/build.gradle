@@ -56,6 +56,11 @@ dependencies {
     api "org.jetbrains.anko:anko-common:$anko_version"
     // 数据库
     api "org.jetbrains.anko:anko-sqlite:$anko_version"
+    implementation "androidx.room:room-runtime:2.2.5"
+    // For Kotlin use kapt instead of annotationProcessor
+    kapt "androidx.room:room-compiler:2.2.5"
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:2.2.5"
     //Read and Write
     api "com.squareup.okio:okio:2.4.3"
     // 网络请求
@@ -114,7 +119,7 @@ dependencies {
     // 支付宝支付
     implementation files('libs/alipaySDK-20151014.jar')
     // 下载资源
-    implementation 'com.gitee.jiang_li_jie_j:awesome-downloader:1.2.0-alpha'
+//    implementation 'com.gitee.jiang_li_jie_j:awesome-downloader:1.2.0-alpha'
     // 滑轮选择器
     api 'org.jaaksi:pickerview:3.0.2'
 }

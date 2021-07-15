@@ -15,7 +15,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import com.igexin.sdk.PushManager
-import com.jiang.awesomedownloader.core.AwesomeDownloader
 import com.umeng.analytics.MobclickAgent
 import com.umeng.commonsdk.UMConfigure
 import com.umeng.socialize.PlatformConfig
@@ -27,6 +26,7 @@ import com.zb.baselibs.bean.ProvinceInfo
 import com.zb.baselibs.db.CityDb
 import com.zb.baselibs.db.DistrictDb
 import com.zb.baselibs.db.ProvinceDb
+import com.zb.baselibs.utils.awesome.core.AwesomeDownloader
 import org.json.JSONArray
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -54,7 +54,6 @@ fun initUtil(activity:AppCompatActivity) {
     PlatformConfig.setQQFileProvider("${BaseApp.context.packageName}.fileprovider")
 
     AwesomeDownloader.initWithDefaultMode(activity)
-    AwesomeDownloader.option.showNotification = false
 }
 
 /**

@@ -86,5 +86,10 @@
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" />
+
+        <service
+            android:name=".utils.awesome.core.downloader.ForegroundServiceDownloader"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 </manifest>
