@@ -1,10 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zb.baselibs">
-    <!-- 允许应用程序联网和发送统计数据的权限，以便提供统计分析服务。-->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 检测联网方式，在网络异常状态下避免数据发送，节省流量和电量。-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application>
         <!--region 适配全面屏-->
         <meta-data
