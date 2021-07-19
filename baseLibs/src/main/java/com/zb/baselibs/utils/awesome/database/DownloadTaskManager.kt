@@ -6,13 +6,11 @@ import androidx.lifecycle.LiveData
 import androidx.room.Room
 import com.zb.baselibs.utils.awesome.tool.TAG
 
-const val DATABASE_NAME = "AwesomeDownloader_DB"
-
 class DownloadTaskManager(private val appContext: Context) {
 
     private val database by lazy {
         Room.databaseBuilder(appContext, DownloaderRoomDatabase::class.java,
-            DATABASE_NAME
+            "AwesomeDownloader_DB"
         ).build()
     }
 
