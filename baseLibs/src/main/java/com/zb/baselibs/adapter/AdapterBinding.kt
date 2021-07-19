@@ -38,10 +38,10 @@ import java.util.concurrent.TimeUnit
 // 按钮防抖
 @SuppressLint("CheckResult")
 @BindingAdapter("onClickDelayed")
-fun View.onClickDelayed(listener: View.OnClickListener) {
+fun View.onClickDelayed(listener: View.OnClickListener?) {
     RxView.clicks(this) //两秒钟之内只取一个点击事件，防抖操作
         .throttleFirst(1, TimeUnit.SECONDS)
-        .subscribe { listener.onClick(this) }
+        .subscribe { listener!!.onClick(this) }
 }
 
 // 计算view大小

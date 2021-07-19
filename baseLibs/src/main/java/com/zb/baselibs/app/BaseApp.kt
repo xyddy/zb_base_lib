@@ -41,6 +41,24 @@ abstract class BaseApp : MultiDexApplication() {
         }
 
         /**
+         * Activity退出时清除集合中的Activity.
+         *
+         * @param oneself 被移除的activity
+         */
+        fun removeActivity(oneself: AppCompatActivity) {
+            try {
+                val iterator: MutableIterator<AppCompatActivity> = mActivityList.iterator()
+                while (iterator.hasNext()) {
+                    val current: AppCompatActivity = iterator.next()
+                    if (current == oneself) {
+                        iterator.remove()
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+        /**
          * 退出应用时调用
          */
         fun exit() {
