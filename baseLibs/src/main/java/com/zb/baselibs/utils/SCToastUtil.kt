@@ -9,9 +9,8 @@ import androidx.databinding.DataBindingUtil
 import com.zb.baselibs.R
 import com.zb.baselibs.app.BaseApp
 import com.zb.baselibs.databinding.ToastViewBinding
-import org.jaaksi.pickerview.util.Util.dip2px
 
-object ToastUtil {
+object SCToastUtil {
     private lateinit var translateY: ObjectAnimator
 
     /**  toastType：  0：普通Toast  1：居中  2：置顶  */
@@ -27,11 +26,11 @@ object ToastUtil {
             toast.duration = Toast.LENGTH_SHORT
             toast.view = mBinding.root //添加视图文件
             if (toastType == 2) {
-                toast.setGravity(Gravity.TOP, 0, -dip2px(activity, 75f))
+                toast.setGravity(Gravity.TOP, 0, -BaseApp.context.dip2px(75f))
                 translateY = ObjectAnimator.ofFloat(
                     mBinding.toastLinear,
                     "translationY",
-                    -dip2px(activity, 75f).toFloat(),
+                    -BaseApp.context.dip2px(75f).toFloat(),
                     0F
                 ).setDuration(500)
                 if (!translateY.isRunning) {

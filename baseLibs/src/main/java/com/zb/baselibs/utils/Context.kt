@@ -17,6 +17,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
@@ -41,6 +42,10 @@ fun Context.uploadFile(outPutUrl: String) {
 fun Context.isNetworkConnected(): Boolean {
     val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     return connectivityManager.activeNetworkInfo?.isAvailable ?: false
+}
+
+fun Context.inputMethodManager(): InputMethodManager {
+    return getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 }
 
 /**

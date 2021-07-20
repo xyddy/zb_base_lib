@@ -93,7 +93,7 @@ dependencies {
     // 按钮防抖
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.2.0'
     // 鲁班
-    implementation 'me.shaohui.advancedluban:library:1.3.5'
+    api 'me.shaohui.advancedluban:library:1.3.5'
     // 个推
     api 'com.getui:gtsdk:3.1.4.0'  //个推SDK
     api 'com.getui:gtc:3.1.0.0'  //个推核心组件

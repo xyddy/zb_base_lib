@@ -48,4 +48,18 @@ object ObjectUtils {
         return (BaseApp.H.times(height.toFloat()) / 1920f).toInt()
     }
 
+    // 显示手机号
+    @JvmStatic
+    fun getPhone(phone: String): String? {
+        return if (phone.length < 11)
+            phone
+        else
+            phone.substring(0, 3) + " " + phone.substring(3, 7) + " " + phone.substring(7)
+    }
+
+    // 验证码
+    @JvmStatic
+    fun getCodeWidth(): Int {
+        return ((BaseApp.W - BaseApp.context.dip2px(106f)) / 4)
+    }
 }

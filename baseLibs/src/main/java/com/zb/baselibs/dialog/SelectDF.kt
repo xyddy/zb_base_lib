@@ -6,14 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.FragmentManager
 import com.zb.baselibs.R
+import com.zb.baselibs.adapter.SelectAdapter
 import com.zb.baselibs.app.BaseApp
 import com.zb.baselibs.databinding.DfSelectBinding
-import org.jaaksi.pickerview.adapter.WheelAdapter
-import org.jaaksi.pickerview.widget.BasePickerView
-import org.jaaksi.pickerview.widget.BasePickerView.OnSelectedListener
 import org.jaaksi.pickerview.widget.DefaultCenterDecoration
 
-class SelectDF(activity: AppCompatActivity) : BaseDialogFragment(activity), OnSelectedListener {
+class SelectDF(activity: AppCompatActivity) : BaseDialogFragment(activity) {
 
     private lateinit var binding: DfSelectBinding
     private var list = ArrayList<String>()
@@ -47,10 +45,6 @@ class SelectDF(activity: AppCompatActivity) : BaseDialogFragment(activity), OnSe
         setAdapter()
     }
 
-    override fun onSelected(pickerView: BasePickerView<*>?, position: Int) {
-        this.position = position
-    }
-
     private fun setAdapter() {
         val decoration = DefaultCenterDecoration(context)
         decoration.setLineColor(Color.parseColor("#eeeeee"))
@@ -58,7 +52,9 @@ class SelectDF(activity: AppCompatActivity) : BaseDialogFragment(activity), OnSe
         binding.selectPv.adapter = SelectAdapter(list)
         binding.selectPv.setCenterDecoration(decoration)
         binding.selectPv.selectedPosition = position
-        binding.selectPv.setOnSelectedListener(this)
+        binding.selectPv.setOnSelectedListener { pickerView, position ->
+            this.position = position
+        }
     }
 
     fun cancel(view: View) {
@@ -72,16 +68,5 @@ class SelectDF(activity: AppCompatActivity) : BaseDialogFragment(activity), OnSe
 
     interface SelectBack {
         fun selectPosition(position: Int)
-    }
-
-    class SelectAdapter(var data: ArrayList<String>) : WheelAdapter<String> {
-
-        override fun getItemCount(): Int {
-            return data.size
-        }
-
-        override fun getItem(index: Int): String {
-            return data[index]
-        }
     }
 }

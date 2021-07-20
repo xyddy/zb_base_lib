@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 object StatusBarUtil {
     /**
-     * 修改状态栏为全透明
+     * 全屏
      *
      * @param activity
      */
@@ -55,8 +55,7 @@ object StatusBarUtil {
     }
 
     /**
-     * 状态栏亮色模式，设置状态栏黑色文字、图标，
-     * 适配4.4以上版本MIUIV、Flyme和6.0以上版本其他Android
+     * 白底黑字
      *
      * @param activity
      */

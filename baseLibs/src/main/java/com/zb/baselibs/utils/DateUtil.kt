@@ -10,6 +10,7 @@ import java.util.*
 
 @SuppressLint("SimpleDateFormat")
 object DateUtil {
+    const val yyyy = "yyyy"
     const val yyyy_MM_dd = "yyyy-MM-dd"
     const val yyyy_MM_dd_nyr = "yyyy年MM月dd日"
     const val CN_MM_dd = "MM月dd日"

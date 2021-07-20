@@ -10,12 +10,22 @@ class BaseAdapter<T> : BindingItemAdapter<T> {
     private var dialog: BaseDialogFragment? = null
     private var viewModel: BaseLibsViewModel? = null
 
-    constructor(activity: AppCompatActivity?, layoutId: Int, list: MutableList<T>?, dialog: BaseDialogFragment?) :
+    constructor(
+        activity: AppCompatActivity?,
+        layoutId: Int,
+        list: MutableList<T>?,
+        dialog: BaseDialogFragment?
+    ) :
             super(activity, layoutId, list) {
         this.dialog = dialog
     }
 
-    constructor(activity: AppCompatActivity?, layoutId: Int, list: MutableList<T>?, viewModel: BaseLibsViewModel?) :
+    constructor(
+        activity: AppCompatActivity?,
+        layoutId: Int,
+        list: MutableList<T>?,
+        viewModel: BaseLibsViewModel?
+    ) :
             super(activity, layoutId, list) {
         this.viewModel = viewModel
     }
