@@ -50,16 +50,25 @@ object ObjectUtils {
 
     // 显示手机号
     @JvmStatic
-    fun getPhone(phone: String): String? {
-        return if (phone.length < 11)
-            phone
-        else
-            phone.substring(0, 3) + " " + phone.substring(3, 7) + " " + phone.substring(7)
+    fun getPhone(phone: String?): String {
+        if (phone != null) {
+            return if (phone.length < 11)
+                phone
+            else
+                phone.substring(0, 3) + " " + phone.substring(3, 7) + " " + phone.substring(7)
+        }
+        return ""
     }
 
     // 验证码
     @JvmStatic
     fun getCodeWidth(): Int {
         return ((BaseApp.W - BaseApp.context.dip2px(106f)) / 4)
+    }
+
+    // 获取选中时显示的数量
+    @JvmStatic
+    fun getSelectCount(map: HashMap<String, Int>, s: String): String {
+        return if (map.containsKey(s)) map[s].toString() else ""
     }
 }

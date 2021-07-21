@@ -54,6 +54,7 @@ fun initUtil(activity:AppCompatActivity) {
     PlatformConfig.setQQFileProvider("${BaseApp.context.packageName}.fileprovider")
 
     AwesomeDownloader.initWithDefaultMode(activity)
+    getArea()
 }
 
 /**

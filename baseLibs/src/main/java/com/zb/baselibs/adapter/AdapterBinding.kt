@@ -136,7 +136,7 @@ fun SmartRefreshLayout.onLoadMoreListener(onLoadMoreListener: OnLoadMoreListener
 )
 fun loadImage(
     view: ImageView,
-    imageUrl: String = "",
+    imageUrl: String? = "",
     imageRes: Int = 0,
     defaultRes: Int = 0,
     widthSize: Int = 0,
