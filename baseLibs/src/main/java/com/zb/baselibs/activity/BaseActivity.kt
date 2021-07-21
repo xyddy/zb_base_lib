@@ -38,6 +38,7 @@ abstract class BaseActivity : BaseReactiveActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        BaseApp.removeActivity(activity)
         if (needEvenBus())
             removeBus()
     }

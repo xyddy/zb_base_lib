@@ -23,7 +23,6 @@ abstract class BaseApp : MultiDexApplication() {
 
         @JvmField
         var W: Int = 0
-
         var phoneRegex = Regex("^[0-9]{11}$")
         lateinit var context: Context
         lateinit var fixedThreadPool: ExecutorService
@@ -58,6 +57,7 @@ abstract class BaseApp : MultiDexApplication() {
                 e.printStackTrace()
             }
         }
+
         /**
          * 退出应用时调用
          */
