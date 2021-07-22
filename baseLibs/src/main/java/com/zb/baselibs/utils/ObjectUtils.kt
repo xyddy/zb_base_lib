@@ -71,4 +71,10 @@ object ObjectUtils {
     fun getSelectCount(map: HashMap<String, Int>, s: String): String {
         return if (map.containsKey(s)) map[s].toString() else ""
     }
+
+    // 最大输入字数
+    @JvmStatic
+    fun editMax(content: String, max: Int): String {
+        return content.length.toString() + "/" + max
+    }
 }
