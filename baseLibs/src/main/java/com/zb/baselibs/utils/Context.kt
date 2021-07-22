@@ -1,9 +1,6 @@
 package com.zb.baselibs.utils
 
-import android.app.ActivityManager
-import android.app.AlarmManager
-import android.app.Fragment
-import android.app.NotificationManager
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -11,8 +8,10 @@ import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.net.wifi.WifiManager
+import android.os.Vibrator
 import android.preference.PreferenceManager
 import android.provider.Settings
+import android.telephony.TelephonyManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,6 +45,14 @@ fun Context.isNetworkConnected(): Boolean {
 
 fun Context.inputMethodManager(): InputMethodManager {
     return getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+}
+
+fun Context.telephonyManager(): TelephonyManager {
+    return getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+}
+
+fun Context.vibrator(): Vibrator {
+    return getSystemService(Service.VIBRATOR_SERVICE) as Vibrator
 }
 
 /**

@@ -30,6 +30,10 @@ fun getInteger(key: String): Int {
     return BaseApp.context.getSharedPreferences(key, MODE_PRIVATE).getInt(key, 0)
 }
 
+fun getInteger(key: String, value: Int): Int {
+    return BaseApp.context.getSharedPreferences(key, MODE_PRIVATE).getInt(key, value)
+}
+
 //存储key对应的数据
 fun saveLong(key: String, info: Long) {
     val sharedPreferences = BaseApp.context.getSharedPreferences(key, MODE_PRIVATE)

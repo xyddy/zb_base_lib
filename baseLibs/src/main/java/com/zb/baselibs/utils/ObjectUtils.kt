@@ -77,4 +77,9 @@ object ObjectUtils {
     fun editMax(content: String, max: Int): String {
         return content.length.toString() + "/" + max
     }
+
+    @JvmStatic
+    fun count(count: Int): String {
+        return if (count < 99) count.toString() + "" else "···"
+    }
 }
