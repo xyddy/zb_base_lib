@@ -21,7 +21,7 @@
         android:gravity="center">
 
         <ImageView
-            imageUrl="@{item.shareName}"
+            imageRes="@{item.shareRes}"
             android:layout_width="50dp"
             android:layout_height="50dp"/>
 

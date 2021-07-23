@@ -1,8 +1,5 @@
 package com.zb.baselibs.base
 
-import com.zb.baselibs.app.BaseApp
-
 object EvenConfig {
-
-    val payBack: String = "${BaseApp.projectName}_pay_back"
+    var payBack: String = "kotlin_pay_back"
 }

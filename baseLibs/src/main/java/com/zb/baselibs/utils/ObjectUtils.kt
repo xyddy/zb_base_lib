@@ -48,6 +48,11 @@ object ObjectUtils {
         return (BaseApp.H.times(height.toFloat()) / 1920f).toInt()
     }
 
+    @JvmStatic
+    fun getVipExposureHeight(width: Int): Int {
+        return (getViewSizeByWidthFromMax(width) * 900f / 1035f).toInt()
+    }
+
     // 显示手机号
     @JvmStatic
     fun getPhone(phone: String?): String {

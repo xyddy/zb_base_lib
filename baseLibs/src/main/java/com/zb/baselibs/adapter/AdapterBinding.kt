@@ -27,7 +27,6 @@ import com.library.flowlayout.FlowLayoutManager
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
-import com.zb.baselibs.R
 import com.zb.baselibs.app.BaseApp
 import com.zb.baselibs.listener.EditPriceChangedListener
 import com.zb.baselibs.utils.glide.*
@@ -199,19 +198,9 @@ fun loadImage(
             if (imageRes != 0) {
                 builder.load(imageRes).into(view)
             } else {
-                if (imageUrl != null && imageUrl == "QQ") {
-                    builder.load(R.drawable.share_qq_ico).into(view)
-                } else if (imageUrl != null && imageUrl == "QQ空间") {
-                    builder.load(R.drawable.share_qqzore_ico).into(view)
-                } else if (imageUrl != null && imageUrl == "微信") {
-                    builder.load(R.drawable.share_wx_ico).into(view)
-                } else if (imageUrl != null && imageUrl == "朋友圈") {
-                    builder.load(R.drawable.share_wxcircle_ico).into(view)
-                } else {
-                    if (imageUrl != null && imageUrl.contains(".mp3"))
-                        imageUrl = ""
-                    builder.load(imageUrl).into(view)
-                }
+                if (imageUrl != null && imageUrl.contains(".mp3"))
+                    imageUrl = ""
+                builder.load(imageUrl).into(view)
             }
         }
     } catch (e: java.lang.Exception) {

@@ -297,10 +297,10 @@ class XBanner : RelativeLayout {
 
     fun setDelay(delay: Int): XBanner {
         //default delay time is 3000ms
-        if (mDelayTime < 0) {
-            mDelayTime = titleTextSize
+        mDelayTime = if (mDelayTime < 0) {
+            titleTextSize
         } else {
-            mDelayTime = delay
+            delay
         }
         return this
     }
@@ -349,12 +349,16 @@ class XBanner : RelativeLayout {
     }
 
     private fun applyIndicatorGravity() {
-        if (mGravity == INDICATOR_START) {
-            binding.indicatorContainer.gravity = Gravity.START or Gravity.CENTER_VERTICAL
-        } else if (mGravity == INDICATOR_CENTER) {
-            binding.indicatorContainer.gravity = Gravity.CENTER or Gravity.CENTER_VERTICAL
-        } else if (mGravity == INDICATOR_END) {
-            binding.indicatorContainer.gravity = Gravity.END or Gravity.CENTER_VERTICAL
+        when (mGravity) {
+            INDICATOR_START -> {
+                binding.indicatorContainer.gravity = Gravity.START or Gravity.CENTER_VERTICAL
+            }
+            INDICATOR_CENTER -> {
+                binding.indicatorContainer.gravity = Gravity.CENTER or Gravity.CENTER_VERTICAL
+            }
+            INDICATOR_END -> {
+                binding.indicatorContainer.gravity = Gravity.END or Gravity.CENTER_VERTICAL
+            }
         }
     }
 
@@ -421,30 +425,33 @@ class XBanner : RelativeLayout {
     }
 
     private fun setBgRes(position: Int) {
-        when (position) {
+        colors = when (position) {
             -1 -> {
-                colors = intArrayOf(Color.argb(0, 0, 0, 0), Color.argb(0, 0, 0, 0))
+                intArrayOf(Color.argb(0, 0, 0, 0), Color.argb(0, 0, 0, 0))
             }
             0 -> {
-                colors = intArrayOf(Color.argb(255, 255, 221, 176), Color.argb(255, 255, 255, 255))
+                intArrayOf(Color.argb(255, 255, 221, 176), Color.argb(255, 255, 255, 255))
             }
             1 -> {
-                colors = intArrayOf(Color.argb(255, 176, 193, 255), Color.argb(255, 255, 255, 255))
+                intArrayOf(Color.argb(255, 176, 193, 255), Color.argb(255, 255, 255, 255))
             }
             2 -> {
-                colors = intArrayOf(Color.argb(255, 255, 176, 190), Color.argb(255, 255, 255, 255))
+                intArrayOf(Color.argb(255, 255, 176, 190), Color.argb(255, 255, 255, 255))
             }
             3 -> {
-                colors = intArrayOf(Color.argb(255, 194, 176, 255), Color.argb(255, 255, 255, 255))
+                intArrayOf(Color.argb(255, 194, 176, 255), Color.argb(255, 255, 255, 255))
             }
             4 -> {
-                colors = intArrayOf(Color.argb(255, 198, 255, 176), Color.argb(255, 255, 255, 255))
+                intArrayOf(Color.argb(255, 198, 255, 176), Color.argb(255, 255, 255, 255))
             }
             5 -> {
-                colors = intArrayOf(Color.argb(255, 255, 203, 176), Color.argb(255, 255, 255, 255))
+                intArrayOf(Color.argb(255, 255, 203, 176), Color.argb(255, 255, 255, 255))
+            }
+            6 -> {
+                intArrayOf(Color.argb(255, 176, 188, 255), Color.argb(255, 255, 255, 255))
             }
             else -> {
-                colors = intArrayOf(Color.argb(255, 176, 188, 255), Color.argb(255, 255, 255, 255))
+                intArrayOf(Color.argb(255, 255, 184, 197), Color.argb(255, 255, 255, 255))
             }
         }
         gradientDrawable.colors = colors
@@ -485,87 +492,54 @@ class XBanner : RelativeLayout {
      */
     private fun setBg(position: Int, positionOffset: Float) {
         if (positionOffset == 0f) return
-        when (position) {
+        colors = when (position) {
             1 -> {
                 val red = ((255 - 176) * positionOffset).toInt()
                 val green = ((221 - 193) * positionOffset).toInt()
                 val blue = ((255 - 176) * positionOffset).toInt()
-                colors = intArrayOf(
-                    Color.argb(255, 255 - red, 221 - green, 176 + blue),
-                    Color.argb(255, 255, 255, 255)
-                )
+                intArrayOf(Color.argb(255, 255 - red, 221 - green, 176 + blue), Color.argb(255, 255, 255, 255))
             }
             2 -> {
                 val red = ((255 - 176) * positionOffset).toInt()
                 val green = ((193 - 176) * positionOffset).toInt()
                 val blue = ((255 - 190) * positionOffset).toInt()
-                colors = intArrayOf(
-                    Color.argb(255, 176 + red, 193 - green, 255 - blue),
-                    Color.argb(255, 255, 255, 255)
-                )
+                intArrayOf(Color.argb(255, 176 + red, 193 - green, 255 - blue), Color.argb(255, 255, 255, 255))
             }
             3 -> {
                 val red = ((255 - 194) * positionOffset).toInt()
                 val blue = ((255 - 190) * positionOffset).toInt()
-                colors = intArrayOf(
-                    Color.argb(255, 255 - red, 176, 190 + blue),
-                    Color.argb(255, 255, 255, 255)
-                )
+                intArrayOf(Color.argb(255, 255 - red, 176, 190 + blue), Color.argb(255, 255, 255, 255))
             }
             4 -> {
                 val red = ((198 - 194) * positionOffset).toInt()
                 val green = ((255 - 176) * positionOffset).toInt()
                 val blue = ((255 - 176) * positionOffset).toInt()
-                colors = intArrayOf(
-                    Color.argb(255, 194 + red, 176 + green, 255 - blue),
-                    Color.argb(255, 255, 255, 255)
-                )
+                intArrayOf(Color.argb(255, 194 + red, 176 + green, 255 - blue), Color.argb(255, 255, 255, 255))
             }
             5 -> {
                 val red = ((255 - 198) * positionOffset).toInt()
                 val green = ((255 - 203) * positionOffset).toInt()
-                colors = intArrayOf(
-                    Color.argb(255, 198 + red, 255 - green, 176),
-                    Color.argb(255, 255, 255, 255)
-                )
+                intArrayOf(Color.argb(255, 198 + red, 255 - green, 176), Color.argb(255, 255, 255, 255))
             }
             6 -> {
                 val red = ((255 - 176) * positionOffset).toInt()
                 val green = ((203 - 188) * positionOffset).toInt()
                 val blue = ((255 - 176) * positionOffset).toInt()
-                colors = intArrayOf(
-                    Color.argb(255, 255 - red, 203 - green, 176 + blue),
-                    Color.argb(255, 255, 255, 255)
-                )
+                intArrayOf(Color.argb(255, 255 - red, 203 - green, 176 + blue), Color.argb(255, 255, 255, 255))
+            }
+            7 -> {
+                val red = ((255 - 176) * positionOffset).toInt()
+                val green = ((188 - 184) * positionOffset).toInt()
+                val blue = ((255 - 197) * positionOffset).toInt()
+                intArrayOf(Color.argb(255, 176 + red, 188 - green, 255 - blue), Color.argb(255, 255, 255, 255))
             }
             else -> {
                 // 最后一位和第一位左右滑动
-                val red = ((255 - 176) * positionOffset).toInt()
-                val green = ((211 - 188) * positionOffset).toInt()
-                val blue = ((255 - 176) * positionOffset).toInt()
-                colors = intArrayOf(
-                    Color.argb(255, 176 + red, 188 + green, 255 - blue),
-                    Color.argb(255, 255, 255, 255)
-                )
+                val green = ((211 - 184) * positionOffset).toInt()
+                val blue = ((197 - 176) * positionOffset).toInt()
+                intArrayOf(Color.argb(255, 255, 184 + green, 197 - blue), Color.argb(255, 255, 255, 255))
             }
         }
-        //        if (position == -1) {
-//            colors = new int[]{Color.argb(0, 0, 0, 0), Color.argb(0, 0, 0, 0)};
-//        } else if (position == 0) {
-//            colors = new int[]{Color.argb(255, 255, 221, 176), Color.argb(255, 255, 255, 255)};
-//        } else if (position == 1) {
-//            colors = new int[]{Color.argb(255, 176, 193, 255), Color.argb(255, 255, 255, 255)};
-//        } else if (position == 2) {
-//            colors = new int[]{Color.argb(255, 255, 176, 190), Color.argb(255, 255, 255, 255)};
-//        } else if (position == 3) {
-//            colors = new int[]{Color.argb(255, 194, 176, 255), Color.argb(255, 255, 255, 255)};
-//        } else if (position == 4) {
-//            colors = new int[]{Color.argb(255, 198, 255, 176), Color.argb(255, 255, 255, 255)};
-//         } else if (position == 5) {
-//            colors = new int[]{Color.argb(255, 255, 203, 176), Color.argb(255, 255, 255, 255)};
-//        } else {
-//            colors = new int[]{Color.argb(255, 176, 188, 255), Color.argb(255, 255, 255, 255)};
-//        }
         gradientDrawable.colors = colors
         binding.viewpager.background = gradientDrawable
     }
